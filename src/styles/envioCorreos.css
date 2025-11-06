@@ -1,0 +1,620 @@
+/* Envío de Correos - Diseño Moderno */
+
+.envio-container {
+    /* Ocupa el 100% de la altura de la ventana (vh) */
+    height: 83vh;
+    background: linear-gradient(to bottom right, #0f172a, #1e293b, #0f172a);
+    display: flex;
+    flex-direction: column; /* Apila Header, Content y Footer */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden; /* Evita scroll en el body principal */
+    width: 40%;
+}
+
+/* Header */
+.envio-header {
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(71, 85, 105, 0.5);
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.envio-header-icon {
+  background: linear-gradient(to bottom right, #f97316, #dc2626);
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  display: inline-flex;
+  box-shadow: 0 10px 15px -3px rgba(249, 115, 22, 0.3);
+}
+
+.envio-titulo {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+/* Main Content */
+.envio-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2rem;
+  background: linear-gradient(to right bottom, rgb(0 0 0), rgb(71 86 107), rgb(0 0 0));
+}
+
+.envio-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.envio-content::-webkit-scrollbar-track {
+  background: rgba(51, 65, 85, 0.3);
+  border-radius: 4px;
+}
+
+.envio-content::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.5);
+  border-radius: 4px;
+}
+
+.envio-form {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* Labels */
+.envio-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.envio-label-icon {
+  color: #f97316;
+}
+
+/* Input Groups */
+.envio-input-group {
+  background: rgba(30, 41, 59, 0.5);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(71, 85, 105, 0.5);
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+/* Inputs y Textareas */
+.envio-input,
+.envio-textarea {
+  width: 100%;
+  background: #fff7f0;
+  border: 2px solid rgba(71, 85, 105, 0.5);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  color: #000000;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.envio-input:focus,
+.envio-textarea:focus {
+  outline: none;
+  border-color: #000000;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  background: rgba(239, 241, 244, 0.758);
+}
+
+.envio-input::placeholder,
+.envio-textarea::placeholder {
+  color: #64748b;
+}
+
+.envio-textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+/* Validación de emails */
+.email-valido {
+  border-color: #0cb67d !important;
+  background-color: rgba(217, 242, 217, 0.848) !important;
+}
+
+.email-invalido {
+  border-color: #ef4444 !important;
+  background-color: rgba(242, 223, 217, 0.848) !important;
+}
+
+/* Botón Mini Copiar */
+.btn-mini {
+  background: linear-gradient(to right, #334053, #141d2b);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.75rem;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+
+.btn-mini:hover {
+  background: linear-gradient(to right, #475569, #334155);
+  transform: translateY(-1px);
+}
+
+/* Editor de Mensaje */
+.mensaje-container {
+  backdrop-filter: blur(12px);
+  border: #000000;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.rich-text-editor {
+  background: white;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.editor-toolbar {
+  background: #f3f4f6;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.toolbar-btn {
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 0.25rem;
+  padding: 0.375rem 0.5rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+}
+
+.toolbar-btn:hover {
+  background: #e5e7eb;
+}
+
+.toolbar-btn.active {
+  background: #3b82f6;
+  color: white;
+  border-color: #2563eb;
+}
+
+.editor-content {
+  min-height: 200px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 1rem;
+  background: white;
+  color: #1e293b;
+}
+
+.ProseMirror {
+  outline: none;
+  min-height: 180px;
+}
+
+.ProseMirror p {
+  margin: 0.5em 0;
+}
+
+/* Vista previa HTML */
+.vista-previa-html {
+  min-height: 200px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 1rem;
+  background: white;
+  border-radius: 0.75rem;
+  color: #1e293b;
+}
+
+/* Firma */
+.firma-section {
+  backdrop-filter: blur(12px);
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.firma-controls {
+  margin-bottom: 1rem;
+}
+
+.firma-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #cbd5e1;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.firma-checkbox {
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.nombre-personalizado {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 0.75rem;
+}
+
+.firma-container {
+  margin-top: 1rem;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 0.75rem;
+  text-align: left;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.firma-content {
+  max-width: 420px;
+  line-height: 1.4;
+}
+
+.firma-nombre {
+  font-weight: bold;
+  color: #1e3a8a;
+  font-size: 1.125rem;
+  margin-bottom: 0.25rem;
+}
+
+.firma-cargo1 {
+  color: #06b6d4;
+  font-weight: bold;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+.firma-cargo2,
+.firma-cargo3 {
+  color: #1e3a8a;
+  font-size: 0.8125rem;
+  margin-bottom: 0.25rem;
+}
+
+.firma-linea {
+  width: 72%;
+  height: 1px;
+  background-color: #06b6d4;
+  margin: 0.5rem 0;
+}
+
+.firma-logo {
+  margin-top: 0.5rem;
+}
+
+.logo-imagen {
+  width: 70px;
+  height: auto;
+}
+
+/* Archivos Adjuntos */
+.archivos-section {
+  background: rgba(30, 41, 59, 0.5);
+  backdrop-filter: blur(12px);
+  border: 2px dashed rgba(71, 85, 105, 0.5);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.lista-archivos {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.archivo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(71, 85, 105, 0.5);
+  border-radius: 0.75rem;
+}
+
+.archivo-nombre {
+  color: #e2e8f0;
+  font-size: 0.875rem;
+  flex: 1;
+  text-align: left;
+}
+
+.btn-eliminar-archivo {
+  background: rgba(239, 68, 68, 0.2);
+  border: none;
+  cursor: pointer;
+  padding: 0.375rem 0.5rem;
+  border-radius: 0.375rem;
+  transition: all 0.2s;
+  font-size: 0.875rem;
+}
+
+.btn-eliminar-archivo:hover {
+  background: rgba(239, 68, 68, 0.4);
+}
+
+/* Botones Principales */
+.envio-botones {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding: 1.5rem;
+  background: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(71, 85, 105, 0.5);
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-copiar {
+  background: linear-gradient(to right, #3b82f6, #2563eb);
+  color: white;
+}
+
+.btn-copiar:hover {
+  background: linear-gradient(to right, #2563eb, #1d4ed8);
+}
+
+.btn-guardar {
+  background: linear-gradient(to right, #10b981, #059669);
+  color: white;
+}
+
+.btn-guardar:hover {
+  background: linear-gradient(to right, #059669, #047857);
+}
+
+.btn-limpiar {
+  background: linear-gradient(to right, #64748b, #475569);
+  color: white;
+}
+
+.btn-limpiar:hover {
+  background: linear-gradient(to right, #475569, #334155);
+}
+
+.btn-vista-previa {
+  background: linear-gradient(to right, #8b5cf6, #7c3aed);
+  color: white;
+}
+
+.btn-vista-previa:hover {
+  background: linear-gradient(to right, #7c3aed, #6d28d9);
+}
+
+.btn-enviar {
+  background: linear-gradient(to right, #f97316, #ea580c);
+  color: white;
+  font-size: 1rem;
+}
+
+.btn-enviar:hover {
+  background: linear-gradient(to right, #ea580c, #dc2626);
+}
+
+.btn-enviar:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Vista Previa del Correo */
+.vista-previa {
+  margin-top: 1.5rem;
+  background: rgba(30, 41, 59, 0.5);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(71, 85, 105, 0.5);
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.vista-previa-titulo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #f97316;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(249, 115, 22, 0.3);
+}
+
+.vista-previa-contenido {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.vista-previa-campo {
+  background: rgba(15, 23, 42, 0.6);
+  border-left: 4px solid #f97316;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.vista-previa-campo strong {
+  color: #f97316;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+}
+
+.vista-previa-campo-contenido {
+  color: #000000;
+  font-size: 0.875rem;
+  background: #ffffff;
+}
+
+.lista-adjuntos {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+  color: #cbd5e1;
+}
+
+.lista-adjuntos li {
+  margin-bottom: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.vista-previa-mensaje {
+  background: white;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  color: #1e293b;
+  line-height: 1.6;
+}
+
+.mensaje-renderizado {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+/* Tablas en el contenido */
+.mensaje-renderizado table,
+.vista-previa-html table {
+  border-collapse: collapse;
+  margin: 1rem 0;
+  width: auto;
+  max-width: 600px;
+}
+
+.mensaje-renderizado table td,
+.mensaje-renderizado table th,
+.vista-previa-html table td,
+.vista-previa-html table th {
+  border: 1px solid #000;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+}
+
+.mensaje-renderizado table th,
+.vista-previa-html table th {
+  background-color: #1a73e8;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+.mensaje-renderizado table td,
+.vista-previa-html table td {
+  background-color: #e8f0fe;
+}
+
+/* Imágenes */
+.editor-image,
+.mensaje-renderizado img,
+.vista-previa-html img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+  display: block;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .envio-content {
+    padding: 1rem;
+  }
+
+  .envio-form {
+    gap: 1rem;
+  }
+
+  .envio-input-group {
+    padding: 1rem;
+  }
+
+  .envio-botones {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .editor-toolbar {
+    gap: 0.125rem;
+  }
+
+  .toolbar-btn {
+    min-width: 28px;
+    height: 28px;
+    padding: 0.25rem;
+  }
+
+  .firma-content {
+    max-width: 100%;
+  }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.envio-input-group {
+  animation: fadeIn 0.3s ease;
+}

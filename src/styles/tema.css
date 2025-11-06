@@ -1,0 +1,49 @@
+/**
+ * @file styles.css (Supuesto)
+ * @description Define los estilos para el tema claro (por defecto) y
+ * el tema oscuro (.dark-theme), incluyendo el botón de cambio de tema.
+ */
+
+/* Tema Claro (Default) */
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: #f5f5f5;
+  color: #1a1a1a;
+}
+
+/* Tema Oscuro */
+body.dark-theme {
+  background: linear-gradient(to right, #1a1c20a1, #000000ed);
+  color: #e5e5e5;
+}
+
+/* Botón de cambio de tema (Modo Claro) */
+.tema-toggle {
+  position: absolute;
+  top: 15px;
+  right: 22rem;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+/* Botón de cambio de tema (Modo Oscuro) */
+body.dark-theme .tema-toggle {
+  background-color: #e5e5e5;
+  color: #171717;
+}
+
+/* Estilos de texto (Títulos) en Modo Oscuro */
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme h4,
+body.dark-theme .title {
+  color: #ffffff;
+}

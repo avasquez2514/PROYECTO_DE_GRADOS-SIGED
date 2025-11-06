@@ -1,0 +1,457 @@
+/* --- VARIABLES DE COLOR (Nuevo Tema: Light/Dark Sidebar) --- */
+:root {
+  --bg-sidebar: #1e293b; /* Azul oscuro/Slate */
+  --bg-main: #f8fafc; /* Blanco hueso */
+  --bg-content: #ffffff; /* Blanco puro */
+  --border-color: #e2e8f0; /* Gris claro */
+  --text-primary: #1e293b; /* Texto oscuro */
+  --text-secondary: #64748b; /* Texto gris */
+  --text-sidebar: #ffffff; /* Texto de la barra lateral */
+  --accent-color: #2563eb; /* Azul (Botones activos y de edición) */
+  --accent-color-hover: #1d4ed8;
+  --delete-color: #f97316; /* Naranja (Botón de borrar) */
+  --delete-color-hover: #ea580c;
+}
+
+/* --- ESTILOS GLOBALES --- */
+body {
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+.app-layout {
+  display: flex;
+  /* ANTES: min-height: 100vh; */
+  /* AHORA: Usamos min-height: 100vh; SOLO si la tabla es más alta que la ventana,
+     pero en el caso de la imagen, la quitamos para que se adapte al contenido. */
+  min-height: fit-content; /* O simplemente omítelo */ 
+  align-items: baseline;
+}
+
+
+/* Opcional: Asegúrate de que el body también lo permita */
+body {
+  margin: 0;
+  min-height: 100vh; /* Asegura que el body tenga la altura completa */
+  padding:inherit
+}
+
+
+.app-sidebar {
+  flex-basis: 260px;
+  flex-shrink: 0;
+  background: linear-gradient(to right bottom, rgb(3 4 6), rgb(31 50 80), rgb(15, 23, 42));
+  color: var(--text-sidebar);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 1089px;
+}
+
+/* --- CONTENIDO PRINCIPAL --- */
+.app-main-content {
+/* En tu archivo aplicativos.css */
+.app-main-content {
+  flex: 1;
+  /* Aumentamos el padding superior para "bajarlo" visualmente */
+  padding: 1rem;
+  /* Antes era: padding: 2rem 3rem; */
+  overflow-y: auto; 
+}
+}
+
+.sidebar-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 1rem 0.5rem;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.sidebar-btn {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sidebar-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-btn.active {
+  color: var(--text-sidebar);
+  font-weight: 600;
+}
+
+.sidebar-btn-count {
+  font-size: 0.75rem;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: var(--text-sidebar);
+  padding: 0.1rem 0.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.sidebar-btn.active .sidebar-btn-count {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn-add-category {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: rgba(35, 35, 30, 0.981);
+  color: var(--text-sidebar);
+  margin-top: auto; /* Empuja el botón al fondo */
+}
+
+.btn-add-category:hover {
+  background-color: var(--accent-color-hover);
+}
+
+/* --- CONTENIDO PRINCIPAL --- */
+.app-main-content {
+  flex: 1;
+  padding: 1rem;
+  min-height: 80vh;
+  width: 1170px;
+}
+
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.content-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: black;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* --- BARRA DE BÚSQUEDA --- */
+.search-bar {
+  position: relative;
+  width: 300px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-secondary);
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-content);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.search-input::placeholder {
+  color: var(--text-secondary);
+}
+
+/* --- CONTENEDOR DE LA TABLA --- */
+.table-container {
+  background-color: #f0f0ef;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.table-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+  padding: 1.5rem;
+  background: linear-gradient(to right bottom, rgb(0 0 0), rgb(31 50 80), rgb(15, 23, 42));
+  color: white;
+}
+
+.app-table {
+  width: 100%;
+  border-collapse: collapse; /* Bordes limpios */
+  table-layout: auto;
+}
+
+.app-table th,
+.app-table td {
+  padding: 1rem 1.5rem;
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.app-table tr:last-child td {
+  border-bottom: none; /* Sin borde en la última fila */
+}
+
+.app-table th {
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.app-table td {
+  color: var(--text-primary);
+  font-size: 0.9rem;
+}
+
+.app-logo {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  display: block;
+}
+
+.app-table td a {
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.app-table td a:hover {
+  text-decoration: underline;
+}
+
+.actions-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-icon {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid var(--border-color);
+}
+
+.btn-icon.edit {
+  color: var(--accent-color);
+}
+.btn-icon.edit:hover {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: white;
+}
+
+.btn-icon.delete {
+  color: var(--delete-color);
+}
+.btn-icon.delete:hover {
+  background-color: var(--delete-color);
+  border-color: var(--delete-color);
+  color: white;
+}
+
+.empty-table-message {
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+/* --- ESTILOS PARA EL MODAL (MODO CLARO) --- */
+.modal-title {
+  color: var(--text-primary);
+  margin-top: 0;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.section-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.form-input,
+.form-select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-content);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-input:focus,
+.form-select:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27292.4%27%20height%3D%27292.4%27%3E%3Cpath%20fill%3D%27%2364748b%27%20d%3D%27M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-13%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2013l128%20128c3.5%203.5%207.8%205.4%2013%205.4s9.5-1.8%2013-5.4l128-128c3.5-3.5%205.4-7.8%205.4-13%200-5-1.8-9.3-5.4-13z%27%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 0.65em auto;
+  cursor: pointer;
+}
+
+/* Botón primario del modal */
+.btn-primary {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: var(--accent-color);
+  color: var(--text-sidebar);
+  margin-top: 1rem;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-color-hover);
+}
+
+/* --- ESTILOS PARA TRUNCAR URLS LARGAS (SOLUCIÓN MEJORADA) --- */
+
+/* En tu archivo aplicativos.css */
+.url-cell {
+  /* Impone un ancho a la columna. Ajusta el '25%' si quieres más o menos espacio. */
+  width: 25%; 
+  max-width: 300px; /* Asegura que no crezca demasiado */
+  
+  /* Truncamiento directo en la celda */
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  white-space: nowrap;
+}
+
+.url-cell a {
+  /* Asegura que el enlace se comporte como el contenedor completo de la celda */
+  display: block; 
+  width: 100%; 
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* Opcional: Asegurar que la celda de la columna "URL" esté claramente definida */
+.app-table thead th:nth-child(5) { 
+    /* El 5to <th> (contando desde la primera columna invisible de checkbox) es URL */
+    width: 35%;
+}
+
+/* Estilos para los botones en el sidebar */
+.sidebar-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.btn-add-category {
+  background: #353a3e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+  width: 100%;
+}
+
+.btn-add-category:hover {
+  background: #5a6268;
+}
+
+.btn-add-app-sidebar {
+  background: #18557f;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+  width: 100%;
+}
+
+.btn-add-app-sidebar:hover {
+  background: #0056b3;
+}

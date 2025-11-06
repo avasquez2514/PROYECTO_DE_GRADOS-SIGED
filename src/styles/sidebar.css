@@ -1,0 +1,498 @@
+/* Variables de Estilo */
+:root {
+  --sidebar-width: 264px;
+  --navbar-height: 70px;
+  --color-principal: #0d6efd;
+  --color-principal-hover: #0b5ed7;
+  --sidebar-bg: rgba(0, 0, 0, 0.863);
+  --navbar-bg: rgba(0, 0, 0, 0.7);
+  --sidebar-text: #ffffff;
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+}
+
+/* === NAVBAR === */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--navbar-height);
+  background-color: var(--navbar-bg);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--sidebar-border);
+  z-index: 999;
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0 32px;
+  max-width: 100%;
+  background: rgb(0 0 0 / 85%);
+  box-shadow: 0 5px 26px rgb(41 218 255 / 20%);
+}
+
+/* Logo */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--sidebar-text);
+}
+
+.logo-icon img {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+
+
+.logo-text {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--sidebar-text);
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .logo-text {
+    display: inline;
+  }
+}
+
+/* Nav Items (Contenedor negro redondeado) */
+.navbar-items {
+  display: none; /* Se oculta en móvil por defecto */
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
+  padding: 6px 12px;
+  border: 1px solid var(--sidebar-border);
+  margin: 0 auto; /* centra horizontalmente */
+}
+
+/* Se muestra en desktop */
+@media (min-width: 768px) {
+  .navbar-items {
+    display: flex;
+  }
+}
+
+/* Estilo base para TODOS los botones (Home, About, Tema) */
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  border-radius: 24px;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.nav-item:hover {
+  color: var(--sidebar-text);
+}
+
+.nav-item.active {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--sidebar-text);
+}
+
+/* === ESTILO NUEVO PARA EL BOTÓN DE TEMA === */
+/* Hereda .nav-item, solo ajusta el ícono */
+.nav-item-theme {
+  gap: 0.4rem;
+}
+
+.nav-item-theme .tema-icon {
+  font-size: 1.1rem; /* Tamaño de ☀️/🌙 */
+}
+/* === FIN DE ESTILO NUEVO === */
+
+
+/* Right Side */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.mode-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: rgba(234, 179, 8, 0.15);
+  border: 1px solid rgba(234, 179, 8, 0.3);
+  border-radius: 20px;
+  color: #eab308;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.mode-dot {
+  width: 8px;
+  height: 8px;
+  background: #eab308;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.navbar-menu-button {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--sidebar-text);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.navbar-menu-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+  .navbar-menu-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .navbar-items {
+    display: none !important;
+  }
+  
+  .navbar-container {
+    padding: 0 16px;
+  }
+}
+
+/* === SIDEBAR === */
+.sidebar {
+  position: fixed;
+  top: var(--navbar-height);
+  left: 0;
+  bottom: 0;
+  width: var(--sidebar-width);
+  background: rgba(0, 0, 0, 0.967);
+  color: var(--sidebar-text);
+  backdrop-filter: blur(10px);
+  border-right: 1px solid var(--sidebar-border);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  box-sizing: border-box;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+  overflow-x: visible;
+  box-shadow: 0 5px 26px rgb(12 142 221 / 37%);
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+/* Botón Cerrar (móvil) */
+.close-button {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--sidebar-text);
+  cursor: pointer;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .close-button {
+    display: block;
+  }
+}
+
+/* Botón Aplicaciones (Pestaña azul) */
+.menu-button {
+  position: fixed;
+  top: calc(var(--navbar-height) + 90px);
+  left: 0;
+  background: linear-gradient(90deg, #000000e3, #00509a);
+  color: var(--sidebar-text);
+  border: none;
+  padding: 12px 8px;
+  cursor: pointer;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-weight: bold;
+  font-size: 0.85rem;
+  
+  z-index: 998;
+  transition: transform 0.3s ease-in-out;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: none;
+}
+
+@media (min-width: 769px) {
+  .menu-button {
+    display: block;
+  }
+}
+
+.menu-button:hover {
+  background: linear-gradient(180deg, #152947 0%, #154184 100%);
+}
+
+.menu-button.open {
+  transform: translateX(var(--sidebar-width));
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: none;
+  top: var(--navbar-height);
+}
+
+.sidebar.open ~ .overlay {
+  display: block;
+}
+
+/* Menú */
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  margin-bottom: 8px;
+}
+
+/* Botones del menú */
+.menu-title {
+  background: none;
+  border: none;
+  color: var(--sidebar-text);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 12px 0;
+  text-align: left;
+  width: 100%;
+  
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: opacity 0.2s;
+}
+
+.menu-title:hover {
+  opacity: 0.8;
+}
+
+.menu-title span {
+  flex: 1;
+}
+
+.menu-title .chevron {
+  transition: transform 0.3s ease-in-out;
+}
+
+.menu-title .chevron.open {
+  transform: rotate(180deg);
+}
+
+/* Sección Logout */
+.logout-section {
+  margin-top: auto;
+  border-top: 1px solid var(--sidebar-border);
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Botón Settings */
+.settings-button {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  padding: 12px 0;
+  font-size: 0.95rem;
+  
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: color 0.2s;
+}
+
+.settings-button:hover {
+  color: var(--sidebar-text);
+}
+
+/* Botón Logout */
+.logout-button {
+  background: none;
+  border: none;
+  color: #ff6b6b;
+  cursor: pointer;
+  padding: 12px 0;
+  font-size: 0.95rem;
+  
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: opacity 0.2s;
+}
+
+.logout-button:hover {
+  opacity: 0.8;
+}
+
+/* Submenús */
+.submenu {
+  list-style: none;
+  padding-left: 32px;
+  margin: 8px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.submenu-item {
+  position: relative;
+}
+
+.submenu-item button {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 8px 0;
+  text-align: left;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s;
+}
+
+.submenu-item button:hover {
+  color: var(--sidebar-text);
+}
+
+.submenu-item button span {
+  flex: 1;
+}
+
+/* Menú Lateral (Flyout) */
+.submenu-lateral {
+  position: absolute;
+  left: calc(100% + 8px);
+  top: 0;
+  background-color: rgba(26, 26, 26, 0.95);
+  border: 1px solid var(--sidebar-border);
+  border-radius: 8px;
+  padding: 10px;
+  list-style: none;
+  width: 180px;
+  z-index: 1001;
+  backdrop-filter: blur(10px);
+
+
+  transform: translateX(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, pointer-events 0s 0.3s;
+}
+
+.submenu-lateral li {
+  margin: 2;
+}
+
+.submenu-lateral button {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 8px 12px;
+  text-align: left;
+  width: 100%;
+  white-space: nowrap;
+  border-radius: 4px;
+  transition: background-color 0.2  s, color 0.2s;
+}
+
+.submenu-lateral button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--sidebar-text);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  :root {
+    --sidebar-width: 240px;
+  }
+}
+
+/* En tu archivo de estilos (ej. sidebar.css) */
+
+.torre-fija {
+    /* Mantenemos el posicionamiento fijo, pero aseguramos que sea discreto */
+    position: fixed;
+    top: 15px; /* Ligeramente más abajo para que no esté pegado al borde */
+    right: 20px;
+    
+    /* Fondo con gradiente sutil y oscuro para que destaque menos que los botones */
+    background: linear-gradient(90deg, #151c279c, #0e32533b);
+    
+    /* Mejoramos el look de botón */
+    color: #ffffff;
+    padding: 8px 12px; /* Reducido para que sea más elegante */
+    border-radius: 6px; /* Similar a tus botones de navegación */
+    
+    /* Sombra más enfocada */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
+    
+    z-index: 1000; /* Alto, pero no tan excesivo */
+    
+    font-size: 0.85rem; /* Letra un poco más pequeña */
+    font-weight: 600; /* Semi-negrita */
+    
+    /* Aseguramos que el contenido esté alineado */
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Espacio entre el texto "TU TORRE ES:" y el valor */
+    box-shadow: 0 5px 26px rgb(41 218 255 / 20%);
+}
+
+/* Estilo para el valor de la torre, para que resalte */
+.torre-fija .torre-etiqueta {
+    font-weight: 700; /* Negrita completa */
+    /* Color de contraste (puedes usar el azul claro del gradiente) */
+    color: #ffffff; 
+}

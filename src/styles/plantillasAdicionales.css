@@ -1,0 +1,537 @@
+/* =============================== */
+/* CONTENEDOR GENERAL DE LA VISTA */
+/* =============================== */
+
+/* Contenedor principal de la vista con fondo degradado oscuro. */
+.plantilla-container {
+  min-height: 67vh;
+  background: linear-gradient(
+    to bottom right,
+    #0f172a 0%,
+    #1e293b 50%,
+    #0f172a 100%
+  );
+  padding: 1.5rem;
+  font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  width: 100%;
+}
+
+/* Centra el contenido principal limitando su ancho máximo. */
+.plantilla-content {
+  max-width: 90rem;
+  margin: 0 auto;
+}
+
+/* =============================== */
+/* HEADER - REORGANIZADO */
+/* =============================== */
+.plantilla-header {
+  margin-bottom: 2rem;
+}
+
+/* Contenedor flex para el ícono y el título. */
+.plantilla-title-section {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Estilo del ícono (fondo degradado, sombra, redondeado). */
+.plantilla-icon {
+  background: linear-gradient(to bottom right, #f59e0b 0%, #d97706 100%);
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Tamaño y color del SVG dentro del ícono. */
+.plantilla-icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: white;
+}
+
+/* Estilos para el título principal (h1) y subtítulo (p). */
+.plantilla-title-text h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+}
+
+.plantilla-title-text p {
+  font-size: 0.99rem;
+  color: #ffffff;
+  margin: 0 0 1rem 0;
+}
+
+/* BOTÓN AGREGAR DEBAJO DEL SUBTÍTULO */
+/* Contenedor para alinear el botón 'Agregar'. */
+.agregar-button-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* Estilo principal del botón 'Agregar' (degradado, sombra, hover). */
+.agregar-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(to right, #475569 0%, #334155 100%);
+  color: white;
+  font-weight: 500;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+  border: none;
+  cursor: pointer;
+}
+
+/* Efecto hover: invierte degradado y eleva ligeramente. */
+.agregar-button:hover {
+  background: linear-gradient(to right, #334155 0%, #475569 100%);
+  transform: translateY(-1px);
+}
+
+/* Tamaño del SVG dentro del botón 'Agregar'. */
+.agregar-button svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* =============================== */
+/* FORMULARIO NUEVA PLANTILLA */
+/* =============================== */
+/* Contenedor del formulario (fondo translúcido, sombra, borde). */
+.plantilla-formulario {
+  background: rgba(30, 41, 59, 0.5);
+  backdrop-filter: blur(12px);
+  border-radius: 1rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(51, 65, 85, 0.5);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  animation: slideDown 0.3s ease-out;
+}
+
+/* Animación de aparición (fade in y slide vertical). */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Estilo base para inputs y textareas (fondo oscuro, borde). */
+.plantilla-formulario input,
+.plantilla-formulario textarea {
+  width: 100%;
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid #475569;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  color: white;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+/* Color del texto placeholder. */
+.plantilla-formulario input::placeholder,
+.plantilla-formulario textarea::placeholder {
+  color: #64748b;
+}
+
+/* Estilo al enfocar: borde naranja y sombra exterior. */
+.plantilla-formulario input:focus,
+.plantilla-formulario textarea:focus {
+  outline: none;
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+}
+
+/* Estilos específicos del textarea (resize vertical, altura mínima). */
+.plantilla-formulario textarea {
+  resize: vertical;
+  min-height: 120px;
+  font-family: inherit;
+}
+
+/* Contenedor flex para los botones de guardar/cancelar. */
+.plantilla-formulario-botones {
+  display: flex;
+  gap: 0.75rem;
+}
+
+/* Estilo del botón 'Guardar' (color naranja, hover). */
+.btn-guardar {
+  flex: 1;
+  background: linear-gradient(to right, #f59e0b 0%, #f59e0b 100%);
+  color: white;
+  font-weight: 500;
+  padding: 0.625rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.3);
+  border: none;
+  cursor: pointer;
+}
+
+.btn-guardar:hover {
+  background: linear-gradient(to right, #d97706 0%, #d97706 100%);
+}
+
+/* Estilo del botón 'Cancelar' (color gris, hover). */
+.btn-cancelar {
+  padding: 0.625rem 1rem;
+  background: #475569;
+  color: white;
+  border-radius: 0.5rem;
+  transition: background 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-cancelar:hover {
+  background: #334155;
+}
+
+/* =============================== */
+/* LISTA DE PLANTILLAS - 3 COLUMNAS */
+/* =============================== */
+/* Grilla (Grid) para la lista de plantillas (3 columnas). */
+.plantilla-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Estilo de cada tarjeta/item de plantilla (fondo, sombra, borde). */
+.plantilla-item {
+  background: linear-gradient(
+    to right bottom,
+    rgb(3 4 6),
+    rgb(31 50 80),
+    rgb(15, 23, 42)
+  );
+  backdrop-filter: blur(12px);
+  border-radius: 1rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(51, 65, 85, 0.5);
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: fit-content;
+  min-height: 200px;
+}
+
+/* Efecto hover en la tarjeta (cambio de borde, elevación). */
+.plantilla-item:hover {
+  border-color: rgba(71, 85, 105, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Estilo visual al arrastrar (Drag and Drop). */
+.plantilla-item.dragging {
+  opacity: 0.5;
+  transform: rotate(2deg);
+}
+
+/* Contenedor interno de la tarjeta (flex, columna). */
+.plantilla-contenido {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+/* Estilo del título (nombre) de la plantilla. */
+.plantilla-nombre {
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin: 0;
+  border-bottom: 1px solid rgba(71, 85, 105, 0.5);
+  padding-bottom: 0.5rem;
+}
+
+/* Estilo del texto (cuerpo) de la plantilla, con truncado de 8 líneas. */
+.plantilla-texto {
+  color: #cbd5e1;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  margin: 0;
+  word-break: break-word;
+  flex: 1;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 8;
+  -webkit-box-orient: vertical;
+}
+
+/* Contenedor flex para los botones de acción de la tarjeta. */
+.plantilla-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+/* Estilo base común para los botones de la tarjeta (copiar, editar, etc.). */
+.plantilla-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  border: none;
+  cursor: pointer;
+  color: white;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Tamaño de íconos en botones de tarjeta. */
+.plantilla-button svg {
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+/* Colores específicos para botones: Copiar (verde) */
+.plantilla-button.copy {
+  background: #10b981;
+}
+
+.plantilla-button.copy:hover {
+  background: #059669;
+}
+
+/* Editar (naranja) */
+.plantilla-button.edit {
+  background: #f59e0b;
+}
+
+.plantilla-button.edit:hover {
+  background: #d97706;
+}
+
+/* Limpiar (rojo) */
+.plantilla-button.clear {
+  background: #ef4444;
+}
+
+.plantilla-button.clear:hover {
+  background: #dc2626;
+}
+
+/* =============================== */
+/* EMPTY STATE */
+/* =============================== */
+/* Estilos para el mensaje de 'Estado Vacío' (cuando no hay plantillas). */
+.empty-state {
+  text-align: center;
+  padding: 4rem 0;
+  grid-column: 1 / -1;
+}
+
+/* Estilos del ícono y texto del estado vacío. */
+.empty-state svg {
+  width: 4rem;
+  height: 4rem;
+  color: #334155;
+  margin: 0 auto 1rem;
+}
+
+.empty-state p:first-of-type {
+  color: #94a3b8;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.empty-state p:last-of-type {
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+/* =============================== */
+/* FOOTER */
+/* =============================== */
+/* Estilos del pie de página (texto centrado, color). */
+.plantilla-footer {
+  margin-top: 2rem;
+  text-align: center;
+  grid-column: 1 / -1;
+}
+
+.plantilla-footer p {
+  color: #ffffff;
+  font-size: 1.2rem;
+}
+
+.plantilla-footer span {
+  color: #fbbf24;
+  font-weight: 600;
+}
+
+/* =============================== */
+/* MODAL */
+/* =============================== */
+/* Contenedor flex para los botones dentro del modal. */
+.modal-buttons {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+/* Estilo del botón 'Guardar' en el modal (naranja). */
+.modal-save-button {
+  flex: 1;
+  background: linear-gradient(to right, #f59e0b 0%, #f59e0b 100%);
+  color: white;
+  font-weight: 500;
+  padding: 0.625rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.3);
+  border: none;
+  cursor: pointer;
+}
+
+.modal-save-button:hover {
+  background: linear-gradient(to right, #d97706 0%, #d97706 100%);
+}
+
+/* Estilo del botón 'Eliminar' en el modal (rojo). */
+.modal-delete-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1rem;
+  background: #ef4444;
+  color: white;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-delete-button:hover {
+  background: #dc2626;
+}
+
+/* Estilos para inputs/textareas DENTRO del componente Modal. */
+Modal input,
+Modal textarea {
+  width: 100%;
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid #475569;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  color: white;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+/* Estilo para etiquetas (labels) DENTRO del componente Modal. */
+Modal label {
+  color: white;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* =============================== */
+/* RESPONSIVE */
+/* =============================== */
+
+/* Tablet (Grande): Cambia la grilla a 2 columnas. */
+@media (max-width: 1200px) {
+  .plantilla-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Tablet (Pequeña): Cambia la grilla a 1 columna y botones a ancho completo. */
+@media (max-width: 768px) {
+  .plantilla-container {
+    padding: 1rem;
+  }
+
+  .plantilla-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .agregar-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .plantilla-formulario-botones {
+    flex-direction: column;
+  }
+
+  .btn-guardar,
+  .btn-cancelar {
+    width: 100%;
+  }
+
+  .plantilla-list {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .plantilla-buttons {
+    width: 100%;
+  }
+
+  .plantilla-button {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .modal-buttons {
+    flex-direction: column;
+  }
+
+  .modal-save-button,
+  .modal-delete-button {
+    width: 100%;
+  }
+}
+
+/* Móvil: Reduce padding y apila botones de tarjeta. */
+@media (max-width: 480px) {
+  .plantilla-item {
+    padding: 1rem;
+  }
+
+  .plantilla-buttons {
+    flex-direction: column;
+  }
+
+  .plantilla-button {
+    width: 100%;
+  }
+}

@@ -1,0 +1,451 @@
+/* =============================== */
+/* CONTENEDOR GENERAL DE LA VISTA */
+/* =============================== */
+.notas-avances-container {
+  height: 86vh;
+  background: linear-gradient(to bottom right, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+  padding: 1.5rem;
+  font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Esto evita el scroll del contenedor principal */
+}
+
+.notas-content {
+  max-width: 64rem;
+  margin: 0 auto;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%; /* Asegura que ocupe toda la altura disponible */
+}
+
+/* =============================== */
+/* HEADER */
+/* =============================== */
+.notas-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+  flex-shrink: 0; /* Evita que el header se encoja */
+}
+
+.notas-title-section {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.notas-icon {
+  background: linear-gradient(to bottom right, #ef4444 0%, #ec4899 100%);
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.notas-icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: white;
+}
+
+.notas-title-text h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+}
+
+.notas-title-text p {
+  font-size: 0.875rem;
+  color: #ffffff;
+  margin: 0;
+}
+
+.agregar-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(to right, #475569 0%, #334155 100%);
+  color: white;
+  font-weight: 500;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+  border: none;
+  cursor: pointer;
+}
+
+.agregar-button:hover {
+  background: linear-gradient(to right, #334155 0%, #475569 100%);
+}
+
+.agregar-button svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* =============================== */
+/* FORMULARIO NUEVA NOTA */
+/* =============================== */
+.nota-formulario {
+  background: rgba(30, 41, 59, 0.5);
+  backdrop-filter: blur(12px);
+  border-radius: 1rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(51, 65, 85, 0.5);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  animation: slideDown 0.3s ease-out;
+  flex-shrink: 0; /* Evita que el formulario se encoja */
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nota-formulario textarea {
+  width: 100%;
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid #475569;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  color: white;
+  font-size: 0.875rem;
+  resize: none;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+.nota-formulario textarea::placeholder {
+  color: #64748b;
+}
+
+.nota-formulario textarea:focus {
+  outline: none;
+  border-color: #ec4899;
+  box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.1);
+}
+
+.nota-formulario-botones {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.btn-guardar {
+  flex: 1;
+  background: linear-gradient(to right, #ec4899 0%, #ec4899 100%);
+  color: white;
+  font-weight: 500;
+  padding: 0.625rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 15px -3px rgba(236, 72, 153, 0.3);
+  border: none;
+  cursor: pointer;
+}
+
+.btn-guardar:hover {
+  background: linear-gradient(to right, #db2777 0%, #db2777 100%);
+}
+
+.btn-cancelar {
+  padding: 0.625rem 1rem;
+  background: #475569;
+  color: white;
+  border-radius: 0.5rem;
+  transition: background 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-cancelar:hover {
+  background: #334155;
+}
+
+/* =============================== */
+/* LISTA DE NOTAS (AREA CON SCROLL) */
+/* =============================== */
+.notas-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  
+  /* CLAVE: Estas propiedades habilitan el scroll */
+  flex: 1; /* Ocupa todo el espacio disponible */
+  overflow-y: auto; /* Habilita scroll vertical */
+  overflow-x: hidden; /* Evita scroll horizontal */
+  max-height: calc(100vh - 300px); /* Altura máxima para evitar desbordamientos */
+  
+  /* Estilos de scroll personalizados */
+  scrollbar-width: thin;
+  scrollbar-color: #475569 #1e293b;
+}
+
+/* Personalizar scrollbar para Webkit (Chrome, Safari, Edge) */
+.notas-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.notas-list::-webkit-scrollbar-track {
+  background: #1e293b;
+  border-radius: 3px;
+}
+
+.notas-list::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 3px;
+}
+
+.notas-list::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+.nota-item {
+  background: rgba(30, 41, 59, 0.5);
+  backdrop-filter: blur(12px);
+  border-radius: 1rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(51, 65, 85, 0.5);
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  position: relative;
+  flex-shrink: 0; /* Evita que las notas se encojan */
+}
+
+.nota-item:hover {
+  border-color: rgba(71, 85, 105, 0.5);
+}
+
+.nota-texto {
+  color: #ffffff;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  white-space: pre-line;
+  margin-bottom: 1rem;
+  word-wrap: break-word;
+}
+
+.nota-botones {
+  display: flex;
+  gap: 0.5rem;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .nota-botones {
+    opacity: 0;
+  }
+  
+  .nota-item:hover .nota-botones {
+    opacity: 1;
+  }
+}
+
+.nota-botones button {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+
+.nota-botones button svg {
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+.nota-botones button span {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .nota-botones button span {
+    display: inline;
+  }
+}
+
+.nota-botones button.edit {
+  background: #2563eb;
+}
+
+.nota-botones button.edit:hover {
+  background: #1d4ed8;
+}
+
+.nota-botones button.copy {
+  background: #059669;
+}
+
+.nota-botones button.copy:hover {
+  background: #047857;
+}
+
+.nota-botones button.delete {
+  background: #dc2626;
+}
+
+.nota-botones button.delete:hover {
+  background: #b91c1c;
+}
+
+/* =============================== */
+/* EMPTY STATE */
+/* =============================== */
+.empty-state {
+  text-align: center;
+  padding: 4rem 0;
+  flex-shrink: 0;
+}
+
+.empty-state svg {
+  width: 4rem;
+  height: 4rem;
+  color: #334155;
+  margin: 0 auto 1rem;
+}
+
+.empty-state p:first-of-type {
+  color: #94a3b8;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.empty-state p:last-of-type {
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+/* =============================== */
+/* FOOTER */
+/* =============================== */
+.notas-footer {
+  margin-top: 1rem;
+  text-align: center;
+  flex-shrink: 0; /* Evita que el footer se encoja */
+  padding-top: 1rem;
+  border-top: 1px solid rgba(71, 85, 105, 0.3);
+}
+
+.notas-footer p {
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+.notas-footer span {
+  color: #f472b6;
+  font-weight: 600;
+}
+
+/* =============================== */
+/* ESTADO DE CARGA */
+/* =============================== */
+.loading-text {
+  color: #e2e8f0;
+  font-weight: 700;
+  margin-top: 0.625rem;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* =============================== */
+/* MODAL */
+/* =============================== */
+.modal-save-button {
+  background: linear-gradient(to right, #ec4899 0%, #ec4899 100%);
+  color: white;
+  font-weight: 500;
+  padding: 0.625rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 15px -3px rgba(236, 72, 153, 0.3);
+  border: none;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.modal-save-button:hover {
+  background: linear-gradient(to right, #db2777 0%, #db2777 100%);
+}
+
+/* =============================== */
+/* RESPONSIVE */
+/* =============================== */
+@media (max-width: 768px) {
+  .notas-avances-container {
+    padding: 1rem;
+    height: 85vh; /* Un poco más de altura en móviles */
+  }
+
+  .notas-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .agregar-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .nota-formulario-botones {
+    flex-direction: column;
+  }
+
+  .btn-guardar {
+    width: 100%;
+  }
+
+  .btn-cancelar {
+    width: 100%;
+  }
+
+  .nota-botones {
+    opacity: 1; /* Siempre visibles en móviles */
+  }
+
+  .nota-botones button span {
+    display: inline; /* Siempre mostrar texto en móviles */
+  }
+}
+
+@media (max-width: 480px) {
+  .notas-avances-container {
+    height: 90vh; /* Aún más altura en pantallas muy pequeñas */
+  }
+  
+  .nota-item {
+    padding: 1rem;
+  }
+  
+  .nota-botones {
+    flex-direction: column;
+  }
+  
+  .nota-botones button {
+    width: 100%;
+    justify-content: center;
+  }
+}

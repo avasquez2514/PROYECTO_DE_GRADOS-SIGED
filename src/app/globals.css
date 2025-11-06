@@ -1,0 +1,370 @@
+/* 🌐 FONDO GENERAL DEL SITIO (body + html) */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Tahoma, Geneva, sans-serif;
+  font-size: 14px;
+  color: #4C4E59;
+  background-image: 
+  linear-gradient(#8d96a0ea, rgba(0, 0, 0, 0)), url(/fondo2.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+/* 📦 CONTENEDOR PRINCIPAL */
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 0rem;
+  background: transparent;
+}
+
+/* 🧾 CONTENIDO CENTRAL */
+.main-content {
+  text-align: center;
+  max-width: 1000px;
+  width: 100%;
+  background-color: #eaedf5;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  padding: 1rem;
+  margin: auto;
+}
+
+/* 🧭 CENTRADO GLOBAL DE LA APLICACIÓN */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* 🏷️ TÍTULO PRINCIPAL */
+.title {
+  font-size: 2.75rem;
+  font-weight: 600;
+  color: #1e293b;
+  letter-spacing: -0.5px;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* 🎞️ ANIMACIÓN DE ENTRADA */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 🧩 CONTENEDOR GENERAL DE TODAS LAS VISTAS */
+.main-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  min-height: 80vh;
+  width: 100%;
+}
+
+/* 🏢 INDICADOR DE TORRE SELECCIONADA */
+.torre-fija {
+  position: fixed;
+  top: 10px;
+  right: 20px;
+  background: linear-gradient(90deg, #3a7eec, #081d4d);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  z-index: 999;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* --- PANTALLA DE BIENVENIDA (VERSIÓN 17) --- */
+.welcome-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.5s ease-in;
+  padding: 1rem;
+  position: relative;
+}
+
+.welcome-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  text-align: center;
+  padding: 20px;
+}
+
+.welcome-text-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.welcome-title {
+  font-size: 4rem;
+  font-weight: 700;
+  color: #000000;
+  margin: 0;
+  letter-spacing: 4px;
+  animation: fadeIn 0.8s ease-in;
+}
+
+.welcome-subtitle {
+  font-size: 1.2rem;
+  color: #000000;
+  margin: 0;
+  font-weight: 400;
+  animation: fadeIn 1s ease-in;
+}
+
+/* Botón Let's talk */
+.welcome-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 32px;
+  border: 2px solid #000000;
+  background: transparent;
+  color: #1a1a1a;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation: fadeIn 1.2s ease-in;
+}
+
+.welcome-button:hover {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.welcome-button svg {
+  transition: transform 0.3s ease;
+}
+
+.welcome-button:hover svg {
+  transform: translateX(4px);
+}
+
+/* Pantalla blanca cuando se abre sidebar - OCULTA */
+.white-screen {
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-color: #f5f5f5;
+  animation: fadeIn 0.3s ease-in;
+}
+
+/* Pantalla blanca original */
+.pantalla-blanca {
+  width: 100%;
+  height: 100%;
+  background-color: #f5f5f5;
+}
+
+/* ========== 📱 DISEÑO RESPONSIVO ========== */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .app-container {
+    flex-direction: column;
+    padding: 1rem 0.5rem;
+    align-items: stretch;
+  }
+
+  .main-content {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+
+  .main-container {
+    width: 100%;
+    padding: 0.5rem;
+  }
+
+  .welcome-title {
+    font-size: 2rem;
+  }
+
+  .welcome-subtitle {
+    font-size: 1rem;
+  }
+
+  .welcome-button {
+    padding: 10px 24px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.5rem;
+    line-height: 1.5;
+  }
+
+  .main-content {
+    padding: 0.5rem;
+    text-align: center;
+  }
+
+  .main-container {
+    gap: 1rem;
+    padding: 0.5rem;
+  }
+
+  .torre-fija {
+    font-size: 0.9rem;
+    padding: 6px 10px;
+    top: 5px;
+    right: 10px;
+  }
+
+  .welcome-container {
+    padding: 0.5rem;
+  }
+
+  .welcome-content {
+    gap: 30px;
+    padding: 10px;
+  }
+
+  .welcome-title {
+    font-size: 1.5rem;
+  }
+
+  .welcome-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .welcome-button {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+    gap: 6px;
+  }
+
+  .welcome-button svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 360px) {
+  .title {
+    font-size: 1.3rem;
+    line-height: 1.5;
+  }
+
+  .main-container {
+    gap: 0.75rem;
+    padding: 0.2rem;
+  }
+
+  .torre-fija {
+    font-size: 0.8rem;
+    padding: 4px 8px;
+  }
+
+  .welcome-title {
+    font-size: 1.2rem;
+  }
+
+  .welcome-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .welcome-button {
+    padding: 8px 16px;
+    font-size: 0.75rem;
+  }
+}
+
+/* 🧠 INPUTS Y BOTONES MÁS FLEXIBLES */
+input,
+textarea,
+button {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* 💧 MARCA DE AGUA */
+.marca-de-agua {
+  position: fixed;
+  bottom: 10px;
+  right: 15px;
+  width: 150px;
+  height: 150px;
+  background-image: url("/logo-marca-agua.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 2.06;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* 🌙 MODO OSCURO */
+body.dark-theme, html.dark-theme {
+  color: #e5e5e5;
+  background-color: #1a1a1a;
+}
+
+body.dark-theme .main-content {
+  background-color: #2c2c2c;
+  color: #e5e5e5;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+body.dark-theme .title {
+  color: #f1f1f1;
+}
+
+body.dark-theme .torre-fija {
+  background: linear-gradient(to right, #6b7280, #374151);
+  color: #f9fafb;
+}
+
+
+body.dark-theme .welcome-title {
+  color: #f1f1f1;
+}
+
+body.dark-theme .welcome-subtitle {
+  color: #b0b0b0;
+}
+
+body.dark-theme .welcome-button {
+  border-color: #f1f1f1;
+  color: #f1f1f1;
+}
+
+body.dark-theme .welcome-button:hover {
+  background-color: #f1f1f1;
+  color: #1a1a1a;
+}

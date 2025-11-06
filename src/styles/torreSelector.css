@@ -1,0 +1,235 @@
+/* =============================== */
+/* CONTENEDOR GENERAL DEL SELECTOR */
+/* =============================== */
+.torre-selector-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* =============================== */
+/* TÍTULO DEL SELECTOR */
+/* =============================== */
+.torre-selector-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: black;
+  text-align: center;
+  letter-spacing: 0.5px;
+  position: relative;
+}
+
+.torre-selector-title::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(to right, #3b82f6 0%, #8b5cf6 100%);
+  border-radius: 2px;
+}
+
+/* =============================== */
+/* CONTENEDOR DE BOTONES */
+/* =============================== */
+.torre-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  max-width: 900px;
+  width: 100%;
+}
+
+/* =============================== */
+/* BOTONES DE TORRES */
+/* =============================== */
+.torre-button {
+  background: linear-gradient(to bottom right, #02070fe6 0%, #263349 50%, #000000 100%);
+  backdrop-filter: blur(12px);
+  border: 2px solid rgba(59, 130, 246, 0.3);
+  padding: 1.5rem 2rem;
+  border-radius: 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.5px;
+}
+
+/* Efecto de gradiente animado */
+.torre-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.torre-button:hover::before {
+  left: 100%;
+}
+
+/* Estado hover */
+.torre-button:hover {
+  transform: translateY(-4px);
+  border-color: rgba(59, 130, 246, 0.6);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+  background: rgba(30, 41, 59, 0.7);
+}
+
+/* Estado activo (al hacer clic) */
+.torre-button:active {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+}
+
+/* Efecto de foco para accesibilidad */
+.torre-button:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+/* =============================== */
+/* VARIANTES DE COLOR POR BOTÓN */
+/* =============================== */
+.torre-button:nth-child(1) {
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.torre-button:nth-child(1):hover {
+  border-color: rgba(239, 68, 68, 0.6);
+  box-shadow: 0 8px 25px rgba(239, 68, 68, 0.3);
+}
+
+.torre-button:nth-child(2) {
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.torre-button:nth-child(2):hover {
+  border-color: rgba(245, 158, 11, 0.6);
+  box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);
+}
+
+.torre-button:nth-child(3) {
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+.torre-button:nth-child(3):hover {
+  border-color: rgba(34, 197, 94, 0.6);
+  box-shadow: 0 8px 25px rgba(34, 197, 94, 0.3);
+}
+
+.torre-button:nth-child(4) {
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+.torre-button:nth-child(4):hover {
+  border-color: rgba(139, 92, 246, 0.6);
+  box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
+}
+
+.torre-button:nth-child(5) {
+  border-color: rgba(236, 72, 153, 0.3);
+}
+
+.torre-button:nth-child(5):hover {
+  border-color: rgba(236, 72, 153, 0.6);
+  box-shadow: 0 8px 25px rgba(236, 72, 153, 0.3);
+}
+
+.torre-button:nth-child(6) {
+  border-color: rgba(14, 165, 233, 0.3);
+}
+
+.torre-button:nth-child(6):hover {
+  border-color: rgba(14, 165, 233, 0.6);
+  box-shadow: 0 8px 25px rgba(14, 165, 233, 0.3);
+}
+
+.torre-button:nth-child(7) {
+  border-color: rgba(168, 85, 247, 0.3);
+}
+
+.torre-button:nth-child(7):hover {
+  border-color: rgba(168, 85, 247, 0.6);
+  box-shadow: 0 8px 25px rgba(168, 85, 247, 0.3);
+}
+
+/* =============================== */
+/* RESPONSIVE */
+/* =============================== */
+@media (max-width: 768px) {
+  .torre-selector-title {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .torre-buttons {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .torre-button {
+    padding: 1.25rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .torre-selector-container {
+    padding: 1rem;
+  }
+
+  .torre-selector-title {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .torre-button {
+    padding: 1rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* =============================== */
+/* ANIMACIÓN DE ENTRADA */
+/* =============================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.torre-selector-container {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.torre-button {
+  animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.torre-button:nth-child(1) { animation-delay: 0.1s; }
+.torre-button:nth-child(2) { animation-delay: 0.15s; }
+.torre-button:nth-child(3) { animation-delay: 0.2s; }
+.torre-button:nth-child(4) { animation-delay: 0.25s; }
+.torre-button:nth-child(5) { animation-delay: 0.3s; }
+.torre-button:nth-child(6) { animation-delay: 0.35s; }
+.torre-button:nth-child(7) { animation-delay: 0.4s; }

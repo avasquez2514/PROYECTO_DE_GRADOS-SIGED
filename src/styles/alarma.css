@@ -1,0 +1,490 @@
+/* Alarma - Diseño Moderno según imagen de referencia */
+
+/* Variables de Color */
+:root {
+  --bg-dark-main: #1e293b;
+  --bg-dark-card: #334155;
+  --bg-dark-input: #475569;
+  --border-color: #64748b;
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  --accent-color: #f97316;
+  --accent-color-hover: #ea580c;
+  --delete-color: #ef4444;
+  --delete-color-hover: #dc2626;
+}
+
+/* Contenedor Principal */
+.alarm-wrapper {
+  width: 40%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.alarm-wrapper-inner {
+  max-width: 56rem;
+  margin: 0 auto;
+}
+
+/* Tarjeta del Formulario */
+.alarm-card {
+  background: linear-gradient(to right bottom, rgb(3 4 6), rgb(31 50 80), rgb(15, 23, 42));
+  backdrop-filter: blur(12px);
+  border-radius: 1rem;
+  padding: 2rem;
+  border: 1px solid rgba(100, 116, 139, 0.5);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  margin-bottom: 2rem;
+  height: 53vh;
+  width: 100%;
+}
+
+/* Header del formulario */
+.alarm-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.alarm-header-icon {
+  background: linear-gradient(to bottom right, #f97316, #dc2626);
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 15px -3px rgba(249, 115, 22, 0.3);
+}
+
+.alarm-header-text h1 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.alarm-header-text p {
+  margin: 0;
+  color: #ffffff;
+  font-size: 0.875rem;
+}
+
+/* Formulario */
+.alarm-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Secciones del formulario */
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  --text-primary: #ffffff;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.section-label svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Grupo de Input (Hora y Nombre) */
+.input-group {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.input-time,
+.input-name {
+  background: rgba(15, 23, 42, 0.6);
+  border: 2px solid var(--border-color);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  color: #ffffff;
+  font-size: 0.875rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.input-time {
+  width: auto;
+  min-width: 140px;
+}
+
+.input-name {
+  flex: 1;
+}
+
+.input-time:focus,
+.input-name:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+  background: rgba(15, 23, 42, 0.8);
+}
+
+.input-name::placeholder {
+  color: var(--text-secondary);
+}
+
+/* Estilo para el input de tiempo en navegadores webkit */
+.input-time::-webkit-calendar-picker-indicator {
+  filter: invert(1) brightness(0.8);
+  cursor: pointer;
+}
+
+/* Select de Sonido */
+.sound-select {
+  background: rgba(15, 23, 42, 0.6);
+  border: 2px solid var(--border-color);
+  color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.5em;
+  padding-right: 3rem;
+}
+
+.sound-select:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+  background-color: rgba(15, 23, 42, 0.8);
+}
+
+/* Zona de Drag & Drop */
+.drop-zone {
+  border: 2px dashed var(--border-color);
+  border-radius: 0.75rem;
+  padding: 2rem;
+  background: rgba(15, 23, 42, 0.6);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.drop-zone:hover {
+  border-color: var(--accent-color);
+  background: rgba(249, 115, 22, 0.05);
+}
+
+.file-input-hidden {
+  display: none;
+}
+
+.drop-zone-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  color: var(--text-secondary);
+}
+
+.upload-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.drop-zone-label p {
+  margin: 0.5rem 0;
+  font-size: 0.875rem;
+  color: white
+}
+
+.drop-zone-label span {
+  font-size: 0.75rem;
+  color: #f6f6f6;
+}
+
+/* Lista de sonidos personalizados */
+.sounds-list-section {
+  margin-top: 1rem;
+}
+
+.sounds-list-title {
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.sonidos-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sonido-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+}
+
+.sonido-item span {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.sonido-item button {
+  background: none;
+  border: none;
+  color: var(--delete-color);
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  transition: all 0.2s;
+}
+
+.sonido-item button:hover {
+  background: rgba(239, 68, 68, 0.2);
+}
+
+/* Botón de Agregar Alarma */
+.add-alarm-btn {
+  background: linear-gradient(to right bottom, rgb(3 4 6), rgb(19 8 6 / 64%), rgb(15, 23, 42));
+  color: white;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.875rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 15px -3px rgba(249, 115, 22, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.add-alarm-btn:hover {
+  background: linear-gradient(to right bottom, rgb(19, 28, rgba(30, 12, 8, 0.64) 64%), rgb(7, 11, 21));
+  transform: translateY(-2px);
+}
+
+.add-alarm-btn:active {
+  transform: translateY(0);
+}
+
+/* Estado Vacío */
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.empty-icon {
+  width: 4rem;
+  height: 4rem;
+  color: #475569;
+  margin: 0 auto 1rem;
+}
+
+.empty-state h3 {
+  color: var(--text-secondary);
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin: 0 0 0.5rem 0;
+}
+
+.empty-state p {
+  color: #64748b;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+/* Lista de Alarmas */
+.alarm-list-container {
+  margin-top: 1.5rem;
+}
+
+.alarm-list-container h3 {
+  color: var(--text-primary);
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+}
+
+.alarma-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Item de Alarma */
+.alarma-item {
+  background: rgba(51, 65, 85, 0.5);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(100, 116, 139, 0.5);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+  animation: fadeIn 0.3s ease;
+}
+
+.alarma-item:hover {
+  border-color: rgba(249, 115, 22, 0.5);
+  box-shadow: 0 10px 30px -10px rgba(249, 115, 22, 0.3);
+  transform: translateY(-2px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.alarma-item-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.alarma-item-icon {
+  background: rgba(249, 115, 22, 0.2);
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  display: flex;
+}
+
+.alarma-item-icon svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #fb923c;
+}
+
+.alarma-item-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.alarma-hora {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 1.125rem;
+  margin: 0;
+}
+
+.alarma-nombre {
+  color: black;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+/* Botón Eliminar */
+.alarma-eliminar {
+  background: none;
+  border: none;
+  color: var(--delete-color);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.alarma-eliminar:hover {
+  background: rgba(239, 68, 68, 0.2);
+}
+
+.alarma-eliminar svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Overlay de Alarma (Pantalla Completa) */
+.alarma-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.95);
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  z-index: 9999;
+  cursor: pointer;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .alarm-wrapper {
+    padding: 1rem;
+  }
+
+  .alarm-card {
+    padding: 1.5rem;
+  }
+
+  .input-group {
+    flex-direction: column;
+  }
+
+  .input-time {
+    width: 100%;
+  }
+
+  .alarm-header h1 {
+    font-size: 1.25rem;
+  }
+
+  .alarma-hora {
+    font-size: 1rem;
+  }
+
+  .alarma-overlay {
+    font-size: 2rem;
+  }
+}

@@ -1,0 +1,226 @@
+/* ========================= */
+/* MODAL: FONDO Y ESTRUCTURA */
+/* ========================= */
+
+/* FONDO OSCURO CON DESENFOQUE */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+/* CONTENIDO DEL MODAL */
+.modal-content {
+  background: linear-gradient(to right bottom, rgb(23 28 40), rgb(31 50 80), rgb(11 18 34));
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  animation: scaleIn 0.3s ease;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* ========================= */
+/* HEADER DEL MODAL - ACTUALIZADO */
+/* ========================= */
+
+/* CONTENEDOR DEL HEADER CON TÍTULO Y BOTÓN X */
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* TÍTULO DEL MODAL */
+.modal-title {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #ffffff;
+  font-weight: 600;
+  flex: 1;
+}
+
+/* BOTÓN DE CIERRE (X) - CORREGIDO */
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 7px;
+  background: #f44336;
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001;
+}
+
+/* EFECTO HOVER DEL BOTÓN DE CIERRE */
+.modal-close:hover {
+  background: #d32f2f;
+  transform: scale(1.05);
+}
+
+/* ========================= */
+/* CONTENIDO DEL MODAL */
+/* ========================= */
+
+/* CONTENEDOR DEL CUERPO DEL MODAL */
+.modal-body {
+  margin-bottom: 1.5rem;
+}
+
+/* ETIQUETAS DE LOS CAMPOS */
+.modal-content label {
+  display: block;
+  margin: 1rem 0 0.3rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+/* CAMPOS DE TEXTO E INPUT */
+.modal-content input,
+.modal-content textarea {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #475569;
+  border-radius: 8px;
+  font-size: 1rem;
+  resize: vertical;
+  transition: border-color 0.2s ease;
+  background: rgba(15, 23, 42, 0.6);
+  color: white;
+}
+
+.modal-content input::placeholder,
+.modal-content textarea::placeholder {
+  color: #94a3b8;
+}
+
+/* EFECTO DE ENFOQUE (focus) EN INPUTS Y TEXTAREAS */
+.modal-content input:focus,
+.modal-content textarea:focus {
+  border-color: #3b82f6;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+/* ============================= */
+/* BOTONES DE GUARDAR Y ELIMINAR */
+/* ============================= */
+
+/* CONTENEDOR DE BOTONES */
+.modal-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+
+/* ESTILO BASE PARA BOTONES */
+.modal-save-button,
+.modal-delete-button {
+  width: 100%;
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* BOTÓN DE GUARDAR (AZUL) */
+.modal-save-button {
+  background: linear-gradient(to right, #3b82f6, #0e40af);
+  color: white;
+}
+
+/* HOVER DEL BOTÓN DE GUARDAR */
+.modal-save-button:hover {
+  background: linear-gradient(to right, #2563eb, #1e40af);
+  transform: translateY(-1px);
+}
+
+/* BOTÓN DE ELIMINAR (ROJO) */
+.modal-delete-button {
+  background: linear-gradient(to right, #ef4444, #dc2626);
+  color: white;
+}
+
+/* HOVER DEL BOTÓN DE ELIMINAR */
+.modal-delete-button:hover {
+  background: linear-gradient(to right, #dc2626, #b91c1c);
+  transform: translateY(-1px);
+}
+
+/* ================= */
+/* ANIMACIONES CLAVE */
+/* ================= */
+
+/* FADE IN: SUAVE APARICIÓN */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* SCALE IN: ZOOM DE ENTRADA */
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ========================= */
+/* RESPONSIVE */
+/* ========================= */
+
+@media (max-width: 640px) {
+  .modal-content {
+    padding: 1.5rem;
+    width: 95%;
+  }
+  
+  .modal-header {
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+  }
+  
+  .modal-title {
+    font-size: 1.3rem;
+  }
+  
+  .modal-close {
+    width: 28px;
+    height: 28px;
+    font-size: 1rem;
+  }
+}
