@@ -79,4 +79,3 @@ Rol	Nombre
 Estudiante	Anderson Vasquez Gonzalez
 Asesor(es)	Diana Maria Rico Mesa
 Institución	Instituto Tecnológico Metropolitano (ITM)
-Fecha de Entrega	06/10/2025
