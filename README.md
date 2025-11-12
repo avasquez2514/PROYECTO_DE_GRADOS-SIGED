@@ -17,6 +17,8 @@ El propósito principal es **automatizar y optimizar la gestión operativa** de 
 * **Gestión de Rutas:** Optimización y seguimiento de la asignación de rutas de despacho.
 * **Control de Inventario:** Supervisión digital del inventario y control de herramientas técnicas.
 * **Seguridad y Roles:** Autenticación de usuarios basada en roles con **JSON Web Tokens (JWT)** para proteger los módulos internos.
+* **Módulo de Inteligencia Artificial (IA) para Contenido: Integración de funcionalidades de IA para el procesamiento y mejora del contenido textual, incluyendo extracción de texto (OCR) a partir de imágenes cargadas por el usuario, mejora de redacción, corrección de ortografía y generación de sugerencias de formato profesional.
+* **Sistema de Comunicación Automatizada y Plantillas: Desarrollo e implementación de un sistema robusto para el envío de correos automatizados, que incluye plantillas predeterminadas (inicio, cierre, alerta), campos (PARA, CC, CCO), la funcionalidad de archivos adjuntos y la integración de la firma corporativa personalizada.
 
 ## 🛠️ Tecnologías Utilizadas
 
