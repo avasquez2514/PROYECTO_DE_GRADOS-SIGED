@@ -1,5 +1,5 @@
-# 💻 SIGED – SISTEMA INTEGRAL DE GESTIÓN DE 
-DESPACHO
+# 💻 SIGED – SISTEMA INTEGRAL DE GESTIÓN DE DESPACHO
+
 
 [![Estado del Proyecto](https://img.shields.io/badge/STATUS-FINALIZADO-brightgreen)]([URL-DEL-PROYECTO-EN-RENDER])
 [![Tecnología Principal](https://img.shields.io/badge/Frontend-Next.js-000000)](https://nextjs.org/)
